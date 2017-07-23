@@ -12,12 +12,10 @@ FileParser::FileParser(const char* input)
 
 uint64_t FileParser::calculateFileSize(const char* input)
 {
-  uint64_t       size(0);
-  std::ifstream  stream(input, std::ios::binary);
-  std::streampos fSize = stream.tellg();
+  std::ifstream  stream(input, std::ifstream::binary);
 
   stream.seekg(0, std::ios::end);
-  size = static_cast<uint64_t>(stream.tellg() - fSize);
+  uint64_t size = static_cast<uint64_t>(stream.tellg());
   stream.close();
 
   return size;
