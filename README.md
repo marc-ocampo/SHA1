@@ -5,8 +5,9 @@ http://en.wikipedia.org/wiki/SHA-1
 http://tools.ietf.org/html/rfc3174
 
 COMPILATION:
+0. Create ext folder
 1. Run download-ext script to clone google test and build it
-2. Go to the build folder
+2. Go to the build folder (create the folder if needed)
    a. if you want to run unit test, run
       cmake -Dtest=ON .. && make
    b. if you want to run the package, run
