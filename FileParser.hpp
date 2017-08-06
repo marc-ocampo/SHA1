@@ -17,7 +17,7 @@ public:
 
   FileParser(const char*);
   uint64_t getFileSize() { return _file.size(); }
-  charv_t  getFile() { return _file; }
+  charv_t& getFile() { return _file; }
 private:
   uint64_t calculateFileSize(const char*);
   void     setFile(const char*, const uint64_t);

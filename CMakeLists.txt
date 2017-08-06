@@ -5,7 +5,8 @@ set(EXECUTABLE_NAME out)
 set(TEST_EXECUTABLE_NAME ut)
 
 set(FILES main.cpp
-	  FileParser.cpp)
+	  FileParser.cpp
+          MessageDigestCalculator.cpp)
 set(TEST_FILES TestFileParser.cpp)
 
 set(CXX_FLAGS "
