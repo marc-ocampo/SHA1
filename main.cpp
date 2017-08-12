@@ -7,7 +7,7 @@ constexpr auto VALID_NUM_ARG = 2;
 
 void printHash(const std::array<uint32_t, sha1::ESizeH>& hash)
 {
-  std::cout << "HASH: ";
+  std::cout << "SHA1: ";
   for(auto it = hash.begin(); it != hash.end(); ++it)
   {
     std::cout << std::hex << *it;
