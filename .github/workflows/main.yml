@@ -9,8 +9,12 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: rekta na
+    - name: Download and build Google Test
       run: chmod +x download-ext && sudo ./download-ext
+    - name: Build
+      run: mkdir build && cd build && cmake .. && make
+    - name: Test
+      run: cd build && chmod +x ut && sudo ./ut
     #- name: build
     #  run: cd cpp/custom-array && chmod +x run && sudo ./run
     #- name: run tests
