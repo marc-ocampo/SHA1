@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Download and build Google Test
+      run: chmod +x download-ext && sudo ./download-ext
+    - name: Build
+      run: mkdir build && cd build && cmake .. && make
+    - name: Test
+      run: cd build && chmod +x ut && sudo ./ut
+    #- name: build
+    #  run: cd cpp/custom-array && chmod +x run && sudo ./run
+    #- name: run tests
+    #  run: cd cpp/custom-array && ./test
+    #- name: build tests
+    #  run:  ls && cd scripts && ls && sudo chmod +x run && sudo ./run --test --clang
+    #- name: run tests
+    #  run: cd build && ctest --schedule-random --repeat-until-fail 10
