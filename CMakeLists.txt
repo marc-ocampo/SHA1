@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
+project(sha1)
 
 set(PROJECT_NAME          TddCpp)
 set(EXECUTABLE_NAME       sha1)
