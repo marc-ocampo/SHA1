@@ -16,13 +16,15 @@ public:
   FileParser& operator=(const FileParser&) = delete;
 
   FileParser(const char*);
-  uint64_t getFileSize() { return _file.size(); }
+  uint64_t getFileSize() { return _size; }
   charv_t& getFile() { return _file; }
 private:
-  uint64_t calculateFileSize(const char*);
-  void     setFile(const char*, const uint64_t);
+  void setFile(const char*);
 
   charv_t  _file;
+
+  // stored instead of calculating from _file to save in processing time
+  uint64_t _size;
 };
 
 } // namespace input

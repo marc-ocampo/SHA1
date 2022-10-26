@@ -5,32 +5,23 @@
 namespace input
 {
 
-FileParser::FileParser(const char* input)
+FileParser::FileParser(const char* input) : _size(0)
 {
   _file.clear();
-  setFile(input, calculateFileSize(input));
-}
+  
+  std::ifstream sizeCountingStream(input, std::ifstream::binary);
+  sizeCountingStream.seekg(0, std::ios::end);
 
-uint64_t FileParser::calculateFileSize(const char* input)
-{
-  std::ifstream  stream(input, std::ifstream::binary);
+  _size = static_cast<uint64_t>(sizeCountingStream.tellg());
+  sizeCountingStream.close();
 
-  stream.seekg(0, std::ios::end);
-  uint64_t size = static_cast<uint64_t>(stream.tellg());
-  stream.close();
-
-  return size;
-}
-
-void FileParser::setFile(const char* input, const uint64_t size)
-{
-  std::ifstream stream(input, std::ifstream::in);
-  if(!stream.eof() && !stream.fail())
+  std::ifstream fileStream(input, std::ifstream::in);
+  if(!fileStream.eof() && !fileStream.fail())
   {
-    _file.resize(size);
-    stream.read(&_file[0], size);
+    _file.resize(_size);
+    fileStream.read(&_file[0], _size);
   }
-  stream.close();
+  fileStream.close();
 }
 
 } // namespace input
